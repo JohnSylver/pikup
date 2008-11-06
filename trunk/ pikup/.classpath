@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jdk1.6.0_10"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.server.core.container/org.eclipse.jst.server.generic.runtimeTarget/JBoss 4.2.0"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
+	<classpathentry kind="lib" path="G:/workspace/PikupProject/lib/mina-core-2.0.0-M3.jar"/>
+	<classpathentry kind="lib" path="G:/workspace/PikupProject/lib/mysql-connector-java-5.0.4-bin.jar"/>
+	<classpathentry kind="lib" path="D:/Program Files/jboss-4.2.2.GA/client/servlet-api.jar"/>
+	<classpathentry kind="output" path="build/classes"/>
+</classpath>

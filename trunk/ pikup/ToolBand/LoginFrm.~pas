@@ -1,0 +1,30 @@
+unit LoginFrm;
+
+interface
+
+uses
+  Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
+  Dialogs, StdCtrls, ExtCtrls;
+
+type
+  TLoginForm = class(TForm)
+    Image1: TImage;
+    Label1: TLabel;
+    Label2: TLabel;
+    UserName: TEdit;
+    Password: TEdit;
+    CheckBox1: TCheckBox;
+  private
+    { Private declarations }
+  public
+    { Public declarations }
+  end;
+
+var
+  LoginForm: TLoginForm;
+
+implementation
+
+{$R *.dfm}
+
+end.

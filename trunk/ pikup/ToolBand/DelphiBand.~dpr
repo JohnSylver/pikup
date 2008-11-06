@@ -1,0 +1,26 @@
+library DelphiBand;
+
+uses
+  ComServ,
+  _DelphiBand in '_DelphiBand.pas',
+  DelphiBand_TLB in 'DelphiBand_TLB.pas',
+  DelphiBandForm in 'delphibandform.pas' {BandForm},
+  MSHTML_TLB in '..\..\..\Program Files\Borland\Delphi7\Imports\MSHTML_TLB.pas',
+  LoginFrm in 'LoginFrm.pas' {LoginForm},
+  DLLXPTheming in 'DLLXPTheming.pas',
+  SnapScreens in 'SnapScreens.pas' {SnapScreenFrm},
+  IEHelper in 'IEHelper.pas';
+
+exports
+  DllGetClassObject,
+  DllCanUnloadNow,
+  DllRegisterServer,
+  DllUnregisterServer;
+
+{$R *.TLB}
+{$R *.RES}
+
+begin
+end.
+
+

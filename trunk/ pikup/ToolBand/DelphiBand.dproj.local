@@ -1,0 +1,9 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+	<Transactions>
+    <Transaction>2008/10/26 10:11:40.762.pas,G:\workspace\ToolBand\Unit1.pas=G:\workspace\ToolBand\Commucator.pas</Transaction>
+    <Transaction>2008/10/29 16:32:26.598.pas,G:\workspace\ToolBand\MyPopupMenu.pas=</Transaction>
+    <Transaction>2008/10/29 16:49:20.750.pas,G:\workspace\ToolBand\delphibandform.pas=</Transaction>
+    <Transaction>2008/10/29 16:49:20.750.dfm,G:\workspace\ToolBand\delphibandform.dfm=</Transaction>
+  </Transactions>
+</BorlandProject>
