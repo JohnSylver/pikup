@@ -1,0 +1,40 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{f3da2b02-c7dc-4c9a-8748-39a6c0d47da1}</ProjectGuid>
+  </PropertyGroup>
+  <ItemGroup />
+  <ItemGroup />
+  <ProjectExtensions>
+    <Borland.Personality>Default.Personality</Borland.Personality>
+    <Borland.ProjectType />
+    <BorlandProject>
+  <BorlandProject xmlns=""> <Default.Personality> </Default.Personality> </BorlandProject></BorlandProject>
+  </ProjectExtensions>
+  <Target Name="DelphiBand">
+    <MSBuild Projects="DelphiBand.dproj" Targets="" />
+  </Target>
+  <Target Name="DelphiBand:Clean">
+    <MSBuild Projects="DelphiBand.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="DelphiBand:Make">
+    <MSBuild Projects="DelphiBand.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Resource">
+    <MSBuild Projects="Resource\Resource.dproj" Targets="" />
+  </Target>
+  <Target Name="Resource:Clean">
+    <MSBuild Projects="Resource\Resource.dproj" Targets="Clean" />
+  </Target>
+  <Target Name="Resource:Make">
+    <MSBuild Projects="Resource\Resource.dproj" Targets="Make" />
+  </Target>
+  <Target Name="Build">
+    <CallTarget Targets="DelphiBand;Resource" />
+  </Target>
+  <Target Name="Clean">
+    <CallTarget Targets="DelphiBand:Clean;Resource:Clean" />
+  </Target>
+  <Target Name="Make">
+    <CallTarget Targets="DelphiBand:Make;Resource:Make" />
+  </Target>
+</Project>

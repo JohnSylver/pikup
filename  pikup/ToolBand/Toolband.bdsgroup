@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BorlandProject>
+  <PersonalityInfo>
+    <Option>
+      <Option Name="Personality">Default.Personality</Option>
+      <Option Name="ProjectType"></Option>
+      <Option Name="Version">1.0</Option>
+      <Option Name="GUID">{07868E14-B1D5-490B-A4AD-2626447C3609}</Option>
+    </Option>
+  </PersonalityInfo>
+  <Default.Personality>
+    
+    <Projects>
+      <Projects Name="DelphiBand.dll">DelphiBand.bdsproj</Projects>
+      <Projects Name="Resource.dll">Resource\Resource.bdsproj</Projects>
+      <Projects Name="Targets">DelphiBand.dll Resource.dll</Projects>
+    </Projects>
+    <Dependencies/>
+  </Default.Personality>
+</BorlandProject>

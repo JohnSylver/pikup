@@ -1,0 +1,48 @@
+﻿	<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+		<PropertyGroup>
+			<ProjectGuid>{B1BE7B59-8087-42C2-B909-DFFD8499413D}</ProjectGuid>
+		</PropertyGroup>
+		<ItemGroup>
+			<Projects Include="DelphiBand.dproj">
+				<Dependencies/>
+			</Projects>
+			<Projects Include="PikupRTM\PikupRtm.dproj">
+				<Dependencies/>
+			</Projects>
+		</ItemGroup>
+		<ProjectExtensions>
+			<Borland.Personality>Default.Personality.12</Borland.Personality>
+			<Borland.ProjectType/>
+			<BorlandProject>
+				<Default.Personality/>
+			</BorlandProject>
+		</ProjectExtensions>
+		<Target Name="DelphiBand">
+			<MSBuild Projects="DelphiBand.dproj"/>
+		</Target>
+		<Target Name="DelphiBand:Clean">
+			<MSBuild Targets="Clean" Projects="DelphiBand.dproj"/>
+		</Target>
+		<Target Name="DelphiBand:Make">
+			<MSBuild Targets="Make" Projects="DelphiBand.dproj"/>
+		</Target>
+		<Target Name="PikupRtm">
+			<MSBuild Projects="PikupRTM\PikupRtm.dproj"/>
+		</Target>
+		<Target Name="PikupRtm:Clean">
+			<MSBuild Targets="Clean" Projects="PikupRTM\PikupRtm.dproj"/>
+		</Target>
+		<Target Name="PikupRtm:Make">
+			<MSBuild Targets="Make" Projects="PikupRTM\PikupRtm.dproj"/>
+		</Target>
+		<Target Name="Build">
+			<CallTarget Targets="DelphiBand;PikupRtm"/>
+		</Target>
+		<Target Name="Clean">
+			<CallTarget Targets="DelphiBand:Clean;PikupRtm:Clean"/>
+		</Target>
+		<Target Name="Make">
+			<CallTarget Targets="DelphiBand:Make;PikupRtm:Make"/>
+		</Target>
+		<Import Project="$(BDS)\Bin\CodeGear.Group.Targets" Condition="Exists('$(BDS)\Bin\CodeGear.Group.Targets')"/>
+	</Project>

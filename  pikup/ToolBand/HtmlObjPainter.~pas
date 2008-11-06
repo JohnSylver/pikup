@@ -1,0 +1,92 @@
+unit HtmlObjPainter;
+
+
+interface
+uses windows,MSHTML_TLB;
+ type THtmlObjPainter=class(TInterfacedObject,IElementBehaviorFactory,IElementBehavior,IHTMLPainter)
+ private
+   ihtmlObj:IHTMLElement;
+    FBehaviorSite: IElementBehaviorSite;
+   Body:ihtmlelement;
+   function FindBehavior(const bstrBehavior: WideString; const bstrBehaviorUrl: WideString;
+                          const pSite: IElementBehaviorSite; out ppBehavior: IElementBehavior): HResult; stdcall;
+   function Init(const pBehaviorSite: IElementBehaviorSite): HResult; stdcall;
+   function Notify(lEvent: Integer; var pVar: OleVariant): HResult; stdcall;
+   function Detach: HResult; stdcall;
+   function Draw(rcBounds: tagRECT; rcUpdate: tagRECT; lDrawFlags: Integer;
+                  var hdc: _RemotableHandle; var pvDrawObject: Pointer): HResult; stdcall;
+    function onresize(size: tagSIZE): HResult; stdcall;
+    function GetPainterInfo(out pInfo: _HTML_PAINTER_INFO): HResult; stdcall;
+    function HitTestPoint(pt: tagPOINT; out pbHit: Integer; out plPartID: Integer): HResult; stdcall;
+    function SnapRect(const pIElement: IHTMLElement; var prcNew: tagRECT; eHandle: _ELEMENT_CORNER): HResult; stdcall;
+  public
+
+ end ;
+implementation
+
+function THtmlObjPainter.Init(const pBehaviorSite: IElementBehaviorSite): HResult;
+begin
+  pBehaviorSite.GetElement(ihtmlObj);
+  FBehaviorSite :=pBehaviorSite;
+  Result:=S_OK;
+end;
+
+
+function THtmlObjPainter.FindBehavior(const bstrBehavior: WideString; const bstrBehaviorUrl: WideString;
+                          const pSite: IElementBehaviorSite; out ppBehavior: IElementBehavior): HResult;
+begin
+  ppBehavior:=Self;
+  Result:=S_OK;
+end;
+
+function THtmlObjPainter.Notify(lEvent: Integer; var pVar: OleVariant): HResult;
+begin
+  Result:=S_OK;
+end;
+
+function THtmlObjPainter.Detach:HRESULT;
+begin
+  Result:=S_OK;
+end;
+
+function THtmlObjPainter.Draw(rcBounds: tagRECT; rcUpdate: tagRECT; lDrawFlags: Integer;
+                  var hdc: _RemotableHandle; var pvDrawObject: Pointer): HResult;
+
+begin
+
+  MoveToEx(longword(@hdc),rcBounds.right,rcBounds.top,nil);
+  LineTo(longword(@hdc),rcBounds.left,rcBounds.top);
+  LineTo(longword(@hdc),rcBounds.left,rcBounds.bottom);
+  LineTo(longword(@hdc),rcBounds.right,rcBounds.bottom);
+  LineTo(longword(@hdc),rcBounds.right,rcBounds.top);
+  (FBehaviorSite as IHTMLPaintSite).InvalidateRect(rcUpdate);
+  Result:=S_OK;
+end;
+
+function THtmlObjPainter.onresize(size: tagSIZE): HResult;
+begin
+ //(FBehaviorSite as IHTMLPaintSite).InvalidateRect(nil);
+  result:=S_OK;
+end;
+
+function THtmlObjPainter.GetPainterInfo(out pInfo: _HTML_PAINTER_INFO): HResult;
+begin
+  pInfo.lFlags:=HTMLPAINTER_COMPLEX or HTMLPAINTER_HITTEST;
+  pInfo.lZOrder:=HTMLPAINT_ZORDER_WINDOW_TOP;
+  pInfo.rcExpand.left:=-1;
+  pInfo.rcExpand.top:=-1;
+  pInfo.rcExpand.right:=-1;
+  pInfo.rcExpand.bottom:=-1;
+  Result:=S_OK;
+end;
+
+function THtmlObjPainter.HitTestPoint(pt: tagPOINT; out pbHit: Integer; out plPartID: Integer): HResult;
+begin
+  Result:=S_OK;
+end;
+
+function THtmlObjPainter.SnapRect(const pIElement: IHTMLElement; var prcNew: tagRECT; eHandle: _ELEMENT_CORNER): HResult;
+begin
+ Result:=S_OK; 
+end;
+end.
