@@ -78,6 +78,7 @@ object BandForm: TBandForm
       AutoSize = True
       Caption = #39029#38754#25130#22270
       ImageIndex = 2
+      OnClick = ToolButton3Click
     end
     object ToolButton4: TToolButton
       AlignWithMargins = True

@@ -12,10 +12,10 @@ unit DelphiBand_TLB;
 // ************************************************************************ //
 
 // $Rev: 16059 $
-// File generated on 2008/10/22 23:13:21 from Type Library described below.
+// File generated on 2008/11/7 13:15:53 from Type Library described below.
 
 // ************************************************************************  //
-// Type Lib: G:\workspace\ToolBand\DelphiBand (1)
+// Type Lib: E:\WorkSpace\PikupProject\ToolBand\DelphiBand (1)
 // LIBID: {CD58CE7E-102D-4CEE-A90D-CC91D1FF5B9B}
 // LCID: 0
 // Helpfile:

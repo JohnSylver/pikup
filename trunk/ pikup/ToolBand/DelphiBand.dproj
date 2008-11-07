@@ -79,7 +79,9 @@
 			<None Include="ModelSupport_DelphiBand\SnapScreens\default.txaPackage"/>
 			<None Include="ModelSupport_DelphiBand\_DelphiBand\default.txaPackage"/>
 			<RidlCompile Include="DelphiBand.ridl"/>
-			<DCCReference Include="DelphiBand.res"/>
+			<DCCReference Include="DelphiBand.res">
+				<BuildOrder>25</BuildOrder>
+			</DCCReference>
 			<None Include="ModelSupport_DelphiBand\DelphiBandForm\default.txvpck"/>
 			<None Include="ModelSupport_DelphiBand\DelphiBand\default.txvpck"/>
 			<None Include="ModelSupport_DelphiBand\MyPopupMenu\default.txvpck"/>
@@ -113,7 +115,7 @@
 						<VersionInfo Name="MajorVer">1</VersionInfo>
 						<VersionInfo Name="MinorVer">0</VersionInfo>
 						<VersionInfo Name="Release">0</VersionInfo>
-						<VersionInfo Name="Build">216</VersionInfo>
+						<VersionInfo Name="Build">266</VersionInfo>
 						<VersionInfo Name="Debug">False</VersionInfo>
 						<VersionInfo Name="PreRelease">False</VersionInfo>
 						<VersionInfo Name="Special">False</VersionInfo>
@@ -125,7 +127,7 @@
 					<VersionInfoKeys>
 						<VersionInfoKeys Name="CompanyName"/>
 						<VersionInfoKeys Name="FileDescription"/>
-						<VersionInfoKeys Name="FileVersion">1.0.0.216</VersionInfoKeys>
+						<VersionInfoKeys Name="FileVersion">1.0.0.266</VersionInfoKeys>
 						<VersionInfoKeys Name="InternalName"/>
 						<VersionInfoKeys Name="LegalCopyright"/>
 						<VersionInfoKeys Name="LegalTrademarks"/>
@@ -137,6 +139,9 @@
 					<Source>
 						<Source Name="MainSource">DelphiBand.dpr</Source>
 					</Source>
+					<Language>
+						<Language Name="RootDir">E:\WorkSpace\PikupProject\ToolBand\</Language>
+					</Language>
 				</Delphi.Personality>
 				<ModelSupport>True</ModelSupport>
 				<ActiveXProjectInfo>

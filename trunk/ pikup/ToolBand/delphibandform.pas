@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Classes, Graphics, Controls, Forms, Dialogs,
   ExtCtrls, StdCtrls, ComCtrls,  Buttons, Menus, ToolWin, shdocvw_tlb,
   ImgList, IniFiles, MSHTML_TLB, MapFileUnit,Variants, loginfrm,DLLXPTheming,
-  snapscreens,IEhelper,activex,Registry,MyPopupMenu;
+  snapscreens,IEhelper,activex,Registry,MyPopupMenu,jpeg;
 
 type
   TOperateMode =(SelectSnap,FullSnap,FNone);
@@ -30,6 +30,7 @@ type
     procedure tbSearchTypeClick(Sender: TObject);
     procedure ToolButton2Click(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure ToolButton3Click(Sender: TObject);
   private
     { Private declarations }
     //创建一个BHO对象操作WebBroser
@@ -346,6 +347,63 @@ begin
           _Operation:=SelectSnap;
           IEService.AddDesigner(iehelper);
     end;
+  end;
+end;
+
+procedure TBandForm.ToolButton3Click(Sender: TObject);
+var
+  Doc: IHTMLDocument2;
+  ViewObject: IViewObject;
+  sourceDrawRect: TRect;
+  a, getjpg: TBitMap;
+  i, m: integer;
+  pdest, psour: hbitmap;
+  jpg: tjpegimage;
+begin
+  Doc := ie.Document as IHTMLDocument2;
+  if ie.Document <> nil then
+  try
+    ie.Document.QueryInterface(IViewObject, ViewObject);
+    if ViewObject <> nil then
+    try
+      doc.body.style.overflow := 'hidden';
+      Doc.Get_ParentWindow.Scroll(0, 0); //跳到网页头
+      getjpg := TBitMap.Create();
+      getjpg.PixelFormat := pf24bit;
+
+      getjpg.Height := doc.Body.getAttribute('ScrollHeight', 0);
+      getjpg.Width := doc.Body.getAttribute('Scrollwidth', 0);
+      pdest := getjpg.Canvas.Handle;
+     MoveWindow(ie.HWND,0,0,2000,2000,true);
+
+     // m := Trunc(doc.Body.getAttribute('ScrollHeight', 0) / (doc.Body.getAttribute('offsetHeight', 0) - 20));
+      //i := Trunc(doc.Body.getAttribute('Scrollwidth', 0) / (doc.Body.getAttribute('offsetwidth', 0) - 20));
+     // for i := 0 to i do
+      begin
+       // for m := 0 to m + 1 do
+        begin
+          a := TBitMap.Create();
+          a.Height := doc.Body.getAttribute('offsetHeight', 0);
+          a.Width := doc.Body.getAttribute('offsetWidth', 0);
+          psour := a.Canvas.handle;
+          sourceDrawRect := Rect(0, 0, a.Width, a.Height);
+
+          ViewObject.Draw(DVASPECT_CONTENT, 0, nil, nil, 0, a.Canvas.Handle, @sourceDrawRect, nil, nil, 0);
+          bitblt(pdest, doc.Body.getAttribute('scrollLeft', 0), doc.Body.getAttribute('Scrolltop', 0), a.Width, a.Height, psour, 2, 2, srccopy);
+        //  Doc.Get_ParentWindow.Scroll(doc.Body.getAttribute('scrollLeft', 0), doc.Body.getAttribute('offsetHeight', 0) + doc.Body.getAttribute('Scrolltop', 0) - GetSystemMetrics(SM_CXVSCROLL) - 24);
+          a.Free;
+        end;
+       // Doc.Get_ParentWindow.Scroll(doc.Body.getAttribute('offsetwidth', 0) + doc.Body.getAttribute('scrollLeft', 0) - GetSystemMetrics(SM_CXVSCROLL) - 24, 0);
+      end;
+      jpg := tjpegimage.Create;
+      jpg.Assign(getjpg);
+      getjpg.Free;
+      jpg.SaveToFile('c:\test.jpg');
+      jpg.Free;
+    finally
+      ViewObject._Release;
+    end;
+  except
   end;
 end;
 
