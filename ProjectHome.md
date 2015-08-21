@@ -1,0 +1,2 @@
+A toolbar for IE and FireFox,than it Can Cath Currect Web Page Content(include <table> and <td>) to Server and save it,Auto Load Locel RSS and Bookmark to Server,and Print the WebPage to JPEG and Save to Server<br>
+you can Load this RSS,WebPage mirror,Web Content anywhere
